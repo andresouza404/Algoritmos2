@@ -1,15 +1,17 @@
 package ComprasOnline;
 
-public class Produto {
+abstract public class Produto {
 
-	private String titulo;
 	private double preco;
-
-	public Produto(String titulo, double preco) {
-		this.titulo = titulo;
-		this.preco = preco;
+	
+	@Override
+	public String toString() {
+		return getDescricao();
 	}
 
+	public Produto(double preco) {
+		this.preco = preco;
+	}
 	public double getPreco() {
 		return preco;
 	}
@@ -17,8 +19,6 @@ public class Produto {
 	public void setPreco(double preco) {
 		this.preco = preco;
 	}
-
-	public String getTitulo() {
-		return titulo;
-	}
+	
+	abstract public String getDescricao();
 }

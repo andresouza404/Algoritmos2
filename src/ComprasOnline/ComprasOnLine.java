@@ -3,11 +3,14 @@ package ComprasOnline;
 public class ComprasOnLine {
 
 	public static void main(String[] args) {
-		Produto livro1 = new Produto("Senhor dos Anéis", 120.00);
-		Produto livro2 = new Produto("Algorithms", 427.00);
-		Produto livro3 = new Produto("O Pequeno Príncipe", 10.00);
+		Produto p1 = new Livro("Senhor dos Anéis", 120.00);
+		Produto p2 = new Livro("Algorithms", 427.00);
+		Produto p3 = new Livro("O Pequeno Príncipe", 10.00);
+		Produto p4 = new Camiseta("Azul", 5, 10.00);
+		Produto p5 = new Camiseta("Vermelha", 4, 15.00);
 		
-		double totalCompra = 0.0;
+		CarrinhoDeCompras carrinho = new CarrinhoDeCompras();
+		
 		Produto produto = null;
 		
 		while (true) {
@@ -18,15 +21,18 @@ public class ComprasOnLine {
 				break;
 			
 			switch (escolha) {
-				case "senhor": produto = livro1; break;
-				case "algorithms": produto = livro2; break;
-				case "principe": produto = livro3; break;
+				case "senhor": produto = p1; break;
+				case "algorithms": produto = p2; break;
+				case "principe": produto = p3; break;
+				case "azul": produto = p4; break;
+				case "vermelha": produto = p5; break;
 			}
-			
-			totalCompra += produto.getPreco();
+
+			carrinho.addItem(escolha, produto);	
 		}
-		
-		Console.println("Total da compra: " + totalCompra);
+
+		Console.println("Total da compra: " + carrinho.getTotal()
+		);
 	}
 
 }

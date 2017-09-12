@@ -5,8 +5,8 @@ public class Console {
 
 	private static Scanner teclado = new Scanner(System.in);
 
-	public static void println(String mensagem) {
-		System.out.println(mensagem);
+	public static void println(Object mensagem) {
+		System.out.println(mensagem.toString());
 	}
 
 	public static String readString() {
