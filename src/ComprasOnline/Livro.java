@@ -4,8 +4,8 @@ public class Livro extends Produto {
 	private String titulo;
 	private String editora;
 	
-	public Livro(String titulo, double preco) {
-		super(preco);
+	public Livro(String titulo, String sku, double preco) {
+		super(sku,preco);
 		this.titulo = titulo;
 		this.editora = "";
 	}

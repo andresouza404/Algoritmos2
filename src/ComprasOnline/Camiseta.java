@@ -4,8 +4,9 @@ public class Camiseta extends Produto {
 	private int tamanho;
 	private String cor;
 	
-	public Camiseta(String cor, int tamanho, double preco) {
-		super(preco);
+	public Camiseta(String cor, int tamanho, String sku, double preco)
+	{
+		super(sku, preco);
 		this.cor = cor;
 		this.tamanho = tamanho;
 	}

@@ -2,6 +2,7 @@ package ComprasOnline;
 
 abstract public class Produto {
 
+	private String sku;
 	private double preco;
 	
 	@Override
@@ -9,9 +10,15 @@ abstract public class Produto {
 		return getDescricao();
 	}
 
-	public Produto(double preco) {
+	public Produto(String sku, double preco) {
+		this.sku = sku;
 		this.preco = preco;
 	}
+	
+	public String getSku() {
+		return sku;
+	}
+
 	public double getPreco() {
 		return preco;
 	}
