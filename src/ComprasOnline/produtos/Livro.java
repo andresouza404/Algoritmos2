@@ -1,4 +1,4 @@
-package ComprasOnline;
+package ComprasOnline.produtos;
 
 public class Livro extends Produto {
 	private String titulo;
@@ -24,7 +24,11 @@ public class Livro extends Produto {
 
 	@Override
 	public String getDescricao() {
+		if (editora == null || editora.isEmpty()) {
+			return String.format("Livro: %s (R$ %.02f)",
+						         titulo,getPreco());
+		} 
 		return String.format("Livro: %s/%s (R$ %.02f)",
-	             titulo,editora,getPreco());
+	                         titulo,editora,getPreco());
 	}
 }

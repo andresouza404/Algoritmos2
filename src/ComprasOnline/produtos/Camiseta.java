@@ -1,4 +1,4 @@
-package ComprasOnline;
+package ComprasOnline.produtos;
 
 public class Camiseta extends Produto {
 	private int tamanho;

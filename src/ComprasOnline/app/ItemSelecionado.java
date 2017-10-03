@@ -1,4 +1,6 @@
-package ComprasOnline;
+package ComprasOnline.app;
+
+import ComprasOnline.produtos.Produto;
 
 public class ItemSelecionado {
 	private String id;
@@ -25,5 +27,13 @@ public class ItemSelecionado {
 	
 	public double getValue() {
 		return quantidade * produto.getPreco();
+	}
+	
+	public Produto getProduto() {
+		return produto;
+	}
+	
+	public int getQuantidade() {
+		return quantidade;
 	}
 }

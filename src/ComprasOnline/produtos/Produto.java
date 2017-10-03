@@ -1,4 +1,4 @@
-package ComprasOnline;
+package ComprasOnline.produtos;
 
 abstract public class Produto {
 
@@ -10,6 +10,15 @@ abstract public class Produto {
 		return getDescricao();
 	}
 
+	@Override
+	public boolean equals(Object o) {
+		if (o == this) return true;
+		if (o instanceof Produto) {
+			return ((Produto)o).sku.equalsIgnoreCase(sku);
+		}
+		return false;
+	}
+	
 	public Produto(String sku, double preco) {
 		this.sku = sku;
 		this.preco = preco;
