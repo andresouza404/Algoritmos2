@@ -43,7 +43,7 @@ public class ComprasOnLine {
 			public void execute() {
 				executaSistema = false;
 			}
-		}) );
+		}));
 		
 		return menu;
 	}

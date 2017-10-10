@@ -1,11 +1,10 @@
 package ComprasOnline.view;
 
+import datastructures.Vetor;
+
 public class Menu {
 
-	private static final int MAX_OPCOES = 10;
-	
-	private Opcao[] opcoes = new Opcao[MAX_OPCOES];
-	private int numOpcoes = 0;
+	private Vetor opcoes = new Vetor();
 
 	private String titulo;
 
@@ -15,11 +14,8 @@ public class Menu {
 	}
 
 	public void addOpcao(Opcao opcao) {
-		if (numOpcoes < MAX_OPCOES) {
-			opcoes[numOpcoes] = opcao;
-			numOpcoes++;
-			opcao.setAtalho(numOpcoes);
-		}
+		opcoes.append(opcao);
+		opcao.setAtalho(opcoes.getSize());
 	}
 
 	public void execute() {
@@ -29,14 +25,16 @@ public class Menu {
 	
 	private void exibir() {
 		Console.println("--- " + titulo + " ---");
-		for (int i = 0; i < numOpcoes; i++) {
-			Console.println(opcoes[i].getDisplayFormat());
+		for (int i = 0; i < opcoes.getSize(); i++) {
+			Opcao o = (Opcao)opcoes.get(i);
+			Console.println(o.getDisplayFormat());
 		}
 	}
 
 	private void executaAcao(int atalho) {
-		for (int i = 0; i < numOpcoes; i++) {
-			if (opcoes[i].executaIf(atalho))
+		for (int i = 0; i < opcoes.getSize(); i++) {
+			Opcao o = (Opcao)opcoes.get(i);
+			if (o.executaIf(atalho))
 				return;
 		}
 		Console.println("Opcao invalida!");
