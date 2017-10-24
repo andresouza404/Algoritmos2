@@ -6,12 +6,10 @@ import ComprasOnline.produtos.Camiseta;
 import ComprasOnline.produtos.Livro;
 import ComprasOnline.produtos.Produto;
 import ComprasOnline.view.Console;
+import datastructures.Vetor;
 
 public final class Estoque implements Subscriber {
-	private final int MAX_PRODUCTS = 10;
-
-	private Produto[] produtos = new Produto[MAX_PRODUCTS];
-	private int numberOfProdutcs = 0;
+	private Vetor<Produto> produtos = new Vetor<>();
 	
 	private static Estoque singleInstance;
 	public static Estoque instance() {
@@ -51,9 +49,11 @@ public final class Estoque implements Subscriber {
 	}
 
 	private void addProduct(Produto produto) {
-		if (numberOfProdutcs < MAX_PRODUCTS ) {
-			produtos[numberOfProdutcs] = produto;
-			numberOfProdutcs++;
+		if (produto instanceof Camiseta) {
+			produtos.append(produto);
+		}
+		if (produto instanceof Livro) {
+			produtos.insert(0, produto);
 		}
 	}
 	
@@ -68,21 +68,18 @@ public final class Estoque implements Subscriber {
 	}
 
 	public int getNumberOfProducts() {
-		return numberOfProdutcs ;
+		return produtos.getSize();
 	}
 
 	public Produto getProduct(int i) {
-		if (i < numberOfProdutcs) {
-			return produtos[i];
-		}
-		return null;
+		return produtos.get(i);
 	}
 
 	@Override
 	public void eventOcurred(Object sender) {
-		for (int i = 0; i < numberOfProdutcs; i++) {
-			if (produtos[i].equals(sender)) {
-				Console.println("Vendido: " + produtos[i].getSku());
+		for (Produto p : produtos) {
+			if (p.equals(sender)) {
+				Console.println("Vendido: " + p.getSku());
 				return;
 			}
 		}
